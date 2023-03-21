@@ -37,6 +37,8 @@ public class Status: Codable, Hashable {
     public let reblogged: Bool?
     /// Whether the authenticated user has favourited the status.
     public let favourited: Bool?
+    /// Whether the authenticated user has bookmarked the status.
+    public let bookmarked: Bool?
     /// Whether media attachments should be hidden by default.
     public let sensitive: Bool?
     /// If not empty, warning text that should be displayed before the actual content.
@@ -59,6 +61,8 @@ public class Status: Codable, Hashable {
     public let pinned: Bool?
     /// Preview card for links included within status content.
     public let card: Card?
+    /// The amount of replies.
+    public let repliesCount: Int
 
     private enum CodingKeys: String, CodingKey {
         case id
@@ -75,6 +79,7 @@ public class Status: Codable, Hashable {
         case favouritesCount = "favourites_count"
         case reblogged
         case favourited
+        case bookmarked
         case sensitive
         case spoilerText = "spoiler_text"
         case visibility
@@ -86,6 +91,7 @@ public class Status: Codable, Hashable {
         case reblog
         case pinned
         case card
+        case repliesCount = "replies_count"
     }
 
     public static func == (lhs: Status, rhs: Status) -> Bool {
